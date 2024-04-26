@@ -2,10 +2,13 @@
 {$mode objfpc}{$H+}
 
 uses SysUtils;
+const
+  ProgramToCall = 'echo';
 var
   CmdLine: array of String;
   I: Integer;
   ExitStatus: Integer;
+  ExeFileName: String;
 begin
   Writeln(Format('report-params: %d parameters (and additional parameter 0, program name)', [ParamCount]));
   for I := 0 to ParamCount do
@@ -23,7 +26,11 @@ begin
     CmdLine[I - 1] := ParamStr(I);
   end;
 
-  ExitStatus := ExecuteProcess('/usr/bin/echo', CmdLine);
+  ExeFileName := ExeSearch(ProgramToCall);
+  if ExeFileName = '' then
+    raise Exception.CreateFmt('report-params: program %s not found', [ProgramToCall]);
+  Writeln(Format('report-params: executing %s', [ExeFileName]));
+
+  ExitStatus := ExecuteProcess(ExeFileName, CmdLine);
   ExitCode := ExitStatus;
-  //Halt(ExitStatus);
 end.
