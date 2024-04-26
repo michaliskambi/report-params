@@ -8,8 +8,6 @@ Note that command-line parameter 0 is the name of the program itself. This is al
 
 The called program is trivially hardcoded using `ProgramToCall = 'echo';`. We search it on `$PATH`.
 
-Using [Castle Game Engine](https://castle-engine.io/).
-
 ## Building
 
 Compile by FPC (Free Pascal Compiler).
