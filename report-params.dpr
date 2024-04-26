@@ -4,6 +4,7 @@
 uses SysUtils;
 const
   ProgramToCall = 'echo';
+  ExeExtension = {$ifdef MSWINDOWS} '.exe' {$else} '' {$endif};
 var
   CmdLine: array of String;
   I: Integer;
@@ -26,7 +27,7 @@ begin
     CmdLine[I - 1] := ParamStr(I);
   end;
 
-  ExeFileName := ExeSearch(ProgramToCall);
+  ExeFileName := ExeSearch(ProgramToCall + ExeExtension);
   if ExeFileName = '' then
     raise Exception.CreateFmt('report-params: program %s not found', [ProgramToCall]);
   Writeln(Format('report-params: executing %s', [ExeFileName]));
