@@ -25,8 +25,8 @@ jobs:
           lazarus-version: stable
       - name: test make
         run: make --version
-      - name: test /bin/make
-        run: /bin/make --version
+      # - name: test /bin/make
+      #   run: /bin/make --version
       - name: PATH
         run: echo $PATH
       - name: See environment
