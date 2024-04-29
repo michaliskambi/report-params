@@ -35,3 +35,5 @@ jobs:
         run: echo $PATH
       - name: See environment
         run: ls -R /mingw64/bin
+      - name: See environment 2
+        run: ls -R /c/mingw64/bin
