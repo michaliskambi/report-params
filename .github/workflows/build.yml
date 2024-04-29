@@ -23,12 +23,16 @@ jobs:
         run: make --version
       - name: test make before FPC 2
         run: which make
+      - name: test MinGW make 1
+        run: mingw32-make --version
       - name: Install FPC+Lazarus
         uses: gcarreno/setup-lazarus@v3.2.17
         with:
           lazarus-version: stable
       - name: test make
         run: make --version
+      - name: test MinGW make 2
+        run: mingw32-make --version
       # - name: test /bin/make
       #   run: /bin/make --version
       - name: PATH
