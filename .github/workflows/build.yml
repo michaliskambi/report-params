@@ -29,8 +29,8 @@ jobs:
         run: make
       - name: Run /c/mingw64/bi/nmake
         run: /c/mingw64/bin/make
-      - name: Run /mingw64/binmake
-        run: /mingw64/binmake
+      - name: Run /mingw64/bin/make
+        run: /mingw64/bin/make
       - name: Install FPC+Lazarus
         uses: gcarreno/setup-lazarus@v3.2.17
         with:
@@ -51,5 +51,5 @@ jobs:
         run: make
       - name: Run /c/mingw64/bi/nmake
         run: /c/mingw64/bin/make
-      - name: Run /mingw64/binmake
-        run: /mingw64/binmake
+      - name: Run /mingw64/bin/make
+        run: /mingw64/bin/make
