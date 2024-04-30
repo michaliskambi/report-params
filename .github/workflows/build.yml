@@ -44,6 +44,11 @@ jobs:
 
       - name: PATH
         run: echo $PATH
+      - name: Set environment CASTLE_ENGINE_PATH
+        run: echo "CASTLE_ENGINE_PATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+      - name: Extend environment PATH (Windows)
+        if: ${{ matrix.runner == 'windows-latest' }}
+        run: echo "PATH=${PATH}:`cygpath --unix ${CASTLE_ENGINE_PATH}/installed/bin/`:`cygpath --unix ${GITHUB_WORKSPACE}/pasdoc/bin/`" >> $GITHUB_ENV
       - name: See environment
         run: ls -R /mingw64/bin
       - name: See environment 2
