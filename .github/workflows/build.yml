@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: which make
+      - name: (Before FPC installed) which make
         run: which make
 
       - name: (Before FPC installed) make --version
@@ -49,9 +49,19 @@ jobs:
       - name: See environment 2
         run: ls -R /c/mingw64/bin
 
-      - name: Run make
+      - name: (After) which make
+        run: which make
+
+      - name: (After) make --version
+        run: make --version
+      - name: (After) mingw32-make --version
+        run: mingw32-make --version
+      - name: (After) /c/mingw64/bin/make --version
+        run: /c/mingw64/bin/make --version
+
+      - name: (After) Run make
         run: make
-      - name: Run mingw32-make
+      - name: (After) Run mingw32-make
         run: mingw32-make
-      - name: Run /c/mingw64/bin/make
+      - name: (After) Run /c/mingw64/bin/make
         run: /c/mingw64/bin/make
