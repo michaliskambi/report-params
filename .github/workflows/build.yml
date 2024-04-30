@@ -37,6 +37,9 @@ jobs:
       - name: (Before FPC installed) Run /c/mingw64/bin/make
         run: /c/mingw64/bin/make
 
+      - name: (Before FPC installed) Run make indirectly
+        run: ./run-make.sh
+
       - name: Install FPC+Lazarus
         uses: gcarreno/setup-lazarus@v3.2.17
         with:
@@ -70,3 +73,6 @@ jobs:
         run: mingw32-make
       - name: (After) Run /c/mingw64/bin/make
         run: /c/mingw64/bin/make
+
+      - name: (After) Run make indirectly
+        run: ./run-make.sh
