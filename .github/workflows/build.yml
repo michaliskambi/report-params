@@ -19,37 +19,39 @@ jobs:
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
-      - name: test make before FPC
-        run: make --version
-      - name: test make before FPC 2
+
+      - name: which make
         run: which make
-      - name: test MinGW make 1
+
+      - name: (Before FPC installed) make --version
+        run: make --version
+      - name: (Before FPC installed) mingw32-make --version
         run: mingw32-make --version
-      - name: Run make
+      - name: (Before FPC installed) /c/mingw64/bin/make --version
+        run: /c/mingw64/bin/make --version
+
+      - name: (Before FPC installed) Run make
         run: make
-      - name: Run /c/mingw64/bi/nmake
+      - name: (Before FPC installed) Run mingw32-make
+        run: mingw32-make
+      - name: (Before FPC installed) Run /c/mingw64/bin/make
         run: /c/mingw64/bin/make
-      - name: Run /mingw64/bin/make
-        run: /mingw64/bin/make
+
       - name: Install FPC+Lazarus
         uses: gcarreno/setup-lazarus@v3.2.17
         with:
           lazarus-version: stable
-      - name: test make
-        run: make --version
-      - name: test MinGW make 2
-        run: mingw32-make --version
-      # - name: test /bin/make
-      #   run: /bin/make --version
+
       - name: PATH
         run: echo $PATH
       - name: See environment
         run: ls -R /mingw64/bin
       - name: See environment 2
         run: ls -R /c/mingw64/bin
+
       - name: Run make
         run: make
-      - name: Run /c/mingw64/bi/nmake
+      - name: Run mingw32-make
+        run: mingw32-make
+      - name: Run /c/mingw64/bin/make
         run: /c/mingw64/bin/make
-      - name: Run /mingw64/bin/make
-        run: /mingw64/bin/make
