@@ -13,5 +13,5 @@ The called program is trivially hardcoded using `ProgramToCall = 'echo';`. We se
 Compile by FPC (Free Pascal Compiler).
 
 ```shell
-fpc report_params.dpr
+fpc report-params.dpr
 ```
