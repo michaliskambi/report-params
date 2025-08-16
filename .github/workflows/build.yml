@@ -19,8 +19,8 @@ jobs:
         # We are not using macos-latest, as then setup-lazarus fails
         # with message "This package is incompatible with this version of macOS."
         # likely because of aarch64 vs x86_64.
-        # Using macos-12 as the latest macOS that is known to work flawlessly with CGE GHA.
-        runner: [ubuntu-latest, windows-latest, macos-12]
+        # Using macos-13 as the latest macOS that is known to work flawlessly with CGE GHA.
+        runner: [ubuntu-latest, windows-latest, macos-13]
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v5
