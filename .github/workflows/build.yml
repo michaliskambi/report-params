@@ -15,19 +15,20 @@ jobs:
     name: Build
     strategy:
       matrix:
-        # macOS note:
-        # We are not using macos-latest, as then setup-lazarus fails
-        # with message "This package is incompatible with this version of macOS."
-        # likely because of aarch64 vs x86_64.
-        # Using macos-13 as the latest macOS that is known to work flawlessly with CGE GHA.
-        runner: [ubuntu-latest, windows-latest, macos-13]
+        runner: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v6
-      - name: Install FPC+Lazarus
-        uses: gcarreno/setup-lazarus@v3.4.0
-        with:
-          lazarus-version: stable
+      
+      # Use https://github.com/castle-engine/castle-build-ci to get FPC and CGE
+      - name: Setup Castle Game Engine
+        run: |
+          cd /tmp/ # temporary directory, to be separate from the current project files
+          git clone https://github.com/castle-engine/castle-build-ci.git \
+            --depth=1 --single-branch --branch=master
+          castle-build-ci/install_dependencies
+          castle-build-ci/setup_castle_engine --install-castle-engine=false --install-fpc=true
+        
       - name: Build
         run: fpc report-params.dpr
       - name: Archive Artifacts
