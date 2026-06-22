@@ -18,7 +18,7 @@ jobs:
         runner: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.runner }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       
       # Use https://github.com/castle-engine/castle-build-ci to get FPC and CGE
       - name: Setup Castle Game Engine
